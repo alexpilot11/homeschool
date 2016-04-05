@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!--TODO: Decide if this should always be either shown or not,
+     or if it should be able to be shown to approved users only and not anonymous users -->
+    {% if contact %}
+        <div class="contact_us">
+            <h3>{{ contact.contact_message }}</h3>
+            <p class="info">{{ contact.contact_name }}</p>
+            <p class="info">{{ contact.contact_email }}</p>
+            <p class="info">{{ contact.contact_phone }}</p>
+        </div>
+    {% else %}
+        <h2 class="form-header">There is no contact information available at this time.</h2>
+    {% endif %}
+{% endblock %}

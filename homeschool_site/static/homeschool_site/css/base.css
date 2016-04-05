@@ -1,0 +1,158 @@
+body {
+    background-color: lightsteelblue;
+    font-family: Abel;
+    color: brown;
+    margin-bottom: 50px;
+}
+
+.header {
+    text-align: center;
+    margin: 20px auto;
+    color: brown;
+}
+
+.nav ul.nav {
+    margin-left: 50px;
+    text-align: center;
+    color: brown;
+}
+
+.nav a.nav {
+    color: brown;
+}
+
+.nav a.nav.left {
+    border-left: none;
+
+}
+
+.nav a.nav:visited {
+    color: brown;
+}
+
+.nav a.nav:hover, .nav a.nav:focus {
+    background-color: brown;
+    color: white;
+}
+
+.login {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.forms {
+    margin: 50px 0 0 20px;
+}
+
+.form {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.register {
+    margin-left: 20px;
+}
+
+.form-header {
+    margin: 50px 0 0 8%;
+}
+
+.notes {
+    margin-left: 60px;
+}
+
+.note {
+    position: relative;
+    margin: 0 10px;
+    width: 90%;
+    word-wrap: break-word;
+}
+
+.contact_us {
+    margin: 50px;
+}
+
+.contact_us .info {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.events-list {
+    margin-left: 60px;
+}
+
+.event {
+    margin-top: 20px;
+    width: 90%;
+}
+
+.event-title {
+    font-size: 18px;
+}
+
+.event-information {
+    margin-left: 10px;
+}
+
+.news {
+    margin-left: 60px;
+
+}
+
+.new {
+    margin-top: 20px;
+    width: 90%;
+}
+
+.about_us {
+    margin-left: 60px;
+    width: 90%;
+}
+
+.event-header {
+    margin: 50px 0 30px 8%;
+
+}
+
+.event-details {
+    margin-left: 10%;
+    width: 40%;
+    float: left;
+    display:inline-block;
+
+}
+
+.event-details-header {
+    margin-left: -10px;
+}
+
+.event-other-info {
+    margin-left: 10px;
+}
+
+.rsvp-form {
+    float: right;
+    margin-right: 10%;
+    width: auto;
+    display:inline-block;
+    margin-bottom: 20px;
+}
+
+.rsvp-form li {
+    display: block;
+}
+
+.rsvp-radios {
+    list-style: none;
+    padding: 0;
+}
+
+#rsvp-note {
+    max-width: 800px;
+}

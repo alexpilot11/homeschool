@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if request.user.is_approved or request.user.is_superuser %}
+        {% if events %}
+            <h2 class="form-header">Events:</h2>
+
+            <div class="events-list">
+                {% for event in events %}
+                    <div class="event">
+                        {% if forloop.first %}
+                        {% else %}
+                            <hr>
+                        {% endif %}
+                        <a class="event-title" href="{% url 'event' event.id %}">{{ event.title }}</a>
+                        <div class="event-information">
+                            {% if event.description %}
+                                <p class="event-description">Description: {{ event.description }}</p>
+                            {% endif %}
+                            {% if event.location %}
+                                <p class="event-location">Location: {{ event.location }}</p>
+                            {% endif %}
+                            {% if event.date %}
+                                <p class="event-date">Date: {{ event.date }}</p>
+                            {% endif %}
+                            {% if event.price %}
+                                <p class="event-price">Price: ${{ event.price }}</p>
+                            {% endif %}
+                            {% if event.other_info %}
+                                <p class="event-other-info">Other Information: {{ event.other_info }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <h2 class="form-header">You must be logged in and approved to view this content.</h2>
+        <h4 class="form-header">Please contact your administrator for more information.</h4>
+    {% endif %}
+{% endblock %}

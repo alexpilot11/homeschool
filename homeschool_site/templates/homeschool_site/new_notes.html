@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if request.user.is_superuser %}
+        {% if RSVPs %}
+            <h2 class="form-header">Newest 10 Notes:</h2>
+
+            <div class="notes">
+                {% for RSVP in RSVPs %}
+                    {% if forloop.first %}
+                    {% else %}
+                        <hr>
+                    {% endif %}
+                    <h4>User: {{ RSVP.user }}</h4>
+                    <h5>Event: {{ RSVP.event }}</h5>
+                    <p class="note">{{ RSVP.note }}</p>
+                    {% ifequal RSVP.response True %}
+                        <p style="margin-left: 10px;">Status: Coming</p>
+                    {% else %}
+                        <p style="margin-left: 10px;">Status: Not Coming</p>
+                    {% endifequal %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% else %}
+        <h2 class="form-header">Please log in as an administrator to view this page.</h2>
+    {% endif %}
+{% endblock %}

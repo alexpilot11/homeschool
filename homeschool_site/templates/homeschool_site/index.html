@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if request.user.is_approved or request.user.is_superuser %}
+        <h2 class="form-header">Hi {{ request.user }}! Welcome to the WGHSA Teen Group Website!</h2>
+    {% else %}
+            <h2 class="form-header">Hi! Welcome to the WGHSA Teen Group Website!</h2>
+    {% endif %}
+    {% if about_us %}
+        <h2 class="form-header">About Us:</h2>
+        <p class="about_us">{{ about_us.message }}</p>
+    {% endif %}
+    {% if request.user.is_approved or request.user.is_superuser %}
+        {% if news %}
+            <h2 class="form-header">News:</h2>
+
+            <div class="news">
+
+                <div class="new">
+                    {% for new in news %}
+                        {% if forloop.first %}
+
+                        {% else %}
+                            <hr>
+                        {% endif %}
+                        <h4>{{ new.title }}</h4>
+                        <p>{{ new.body }}</p>
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

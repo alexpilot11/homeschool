@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if request.user.is_approved or request.user.is_superuser %}
+        <h2 class="event-header">{{ event.title }}</h2>
+
+        <div class="event-details">
+            <h4 class="event-details-header">Details:</h4>
+            <p>{{ event.description }}</p>
+            <p>Location: {{ event.location }}</p>
+            <p>Date: {{ event.date }}</p>
+            <p>Price: ${{ event.price }}</p>
+            <h5>Other information:</h5>
+            <p class="event-other-info">{{ event.other_info }}</p>
+        </div>
+        <div class="rsvp-form">
+            <fieldset>
+                <legend>RSVP</legend>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <ul class="rsvp-radios">
+                        {% ifequal request.user.status "student" %}
+                            <h5>Attend?</h5>
+                        {% endifequal %}
+
+                        {% ifequal request.user.status "alumni" %}
+                            <h5>Attend?</h5>
+                        {% endifequal %}
+
+                        {% ifequal request.user.status "chaperone" %}
+                            <h5>Chaperone?</h5>
+
+                        {% endifequal %}
+
+                        <li>
+                            <select name="response" id="response">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li>
+                        <li><h5>Guests?</h5>
+                            <select name=num_guests id="num-guests">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </li>
+                        <li><textarea name="rsvp_note" id="rsvp-note" rows="4" cols="50"
+                                      placeholder="Write a note..."></textarea>
+                        </li>
+                    </ul>
+
+                    <button type="submit" value="RSVP">Submit</button>
+
+                    {% if request.user.is_superuser %}
+                        <a href="//{{ request.get_host }}/admin/homeschool_site/rsvp/" id="view-rsvp">View RSVPs</a>
+                    {% endif %}
+                </form>
+
+            </fieldset>
+        </div>
+
+    {% else %}
+        <h2 class="form-header">You must be logged in to view this information</h2>
+    {% endif %}
+{% endblock %}

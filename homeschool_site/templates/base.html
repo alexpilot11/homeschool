@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WGHSA Teen Group</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="{% static 'homeschool_site/css/base.css' %}">
+
+</head>
+<body>
+{% block header %}
+{#    <img class="header-image" src=""/>#}
+    <h1 class="header">WGHSA Teen Group</h1>
+    <hr>
+    <div class="nav-container container-fluid nav">
+        <ul class="nav">
+            <li class="col-md-2 nav"><a class="nav left" href="{% url "index" %}">Home</a></li>
+            <li class="col-md-2 nav"><a class="nav" href="{% url "forms" %}">Forms</a></li>
+            {% if not request.user.is_staff %}
+                <li class="col-md-2 nav"><a class="nav" href="{% url "contact_us" %}">Contact Us</a></li>
+            {% endif %}
+            {% if request.user.is_staff %}
+                <li class="col-md-2 nav"><a class="nav" href="{% url "new_notes" %}">New Notes</a></li>
+            {% endif %}
+            {% if request.user.is_approved or request.user.is_staff %}
+                <li class="col-md-2 nav"><a class="nav" href="{% url "events" %}">Events</a></li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <li class="col-md-2 nav"><a class="nav" href="{% url "logout" %}">Logout</a></li>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+                <li class="col-md-2 nav"><a class="nav" href="{% url "login" %}">Login</a></li>
+                <li class="col-md-2 nav"><a class="nav" href="{% url "register" %}">Register</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+    <hr>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

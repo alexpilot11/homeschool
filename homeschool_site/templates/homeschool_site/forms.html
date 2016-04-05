@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if forms %}
+        <ul class="forms">
+            {% for form in forms %}
+                {% if not form.is_visible_by_unreg %}
+                    {% if request.user.is_approved or request.user.is_superuser %}
+                        <li class="form"><a href="{% url 'download_form' form.id %}">{{ form.title }}</a></li>
+                    {% endif %}
+                {% else %}
+                    <li class="form"><a href="{% url 'download_form' form.id %}">{{ form.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="forms form">No forms were found.</p>
+    {% endif %}
+{% endblock %}
