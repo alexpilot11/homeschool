@@ -7,7 +7,7 @@ from homeschool_site.models import HomeSchoolUser
 class HomeSchoolUserCreationForm(UserCreationForm):
     class Meta:
         model = HomeSchoolUser
-        fields = ("username", "status")
+        fields = ("username", "status", 'first_name', 'last_name')
 
 
 class HomeSchoolUserChangeForm(UserChangeForm):
